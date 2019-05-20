@@ -1,0 +1,41 @@
+{
+  "name": "@1studio/boilerplate-jsx",
+  "version": "0.0.0-development",
+  "description": "Boilerplate JSX",
+  "main": "index.js",
+  "scripts": {
+    "#clean": "rimraf build && mkdir build && ls -p ./src | grep -v / | grep -v '.jsx\\?$' | xargs -I '$1' cp ./src/'$1' ./build/",
+    "#validate": "npm run validate:lint && npm run validate:coverage",
+    "#validate:lint": "eslint src",
+    "#validate:flow": "flow",
+    "#prevalidate:coverage": "npm run test:coverage",
+    "#validate:coverage": "nyc check-coverage --statelments 90 --branches 80 --functions 100 --lines 90",
+    "#report:coverage": "cat ./coverage/lcov.info | codecov",
+    "#precommit": "npm run validate",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roberto404/boilerplate-jsx.git"
+  },
+  "keywords": [
+    "boilerplate-jsx"
+  ],
+  "author": "Robert Gulyas <robert@1studio.hu> (http://www.1studio.hu/)",
+  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/roberto404/boilerplate-jsx#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "2.*",
+    "semantic-release": "^15.13.12"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/roberto404/boilerplate-jsx/issues"
+  }
+}
